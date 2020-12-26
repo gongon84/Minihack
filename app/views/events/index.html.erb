@@ -1,21 +1,16 @@
 <div class="container">
+    <%= link_to("追加", "/events/new", class: "btn btn-primary") %>
     <div class="event-wrap">
+        <% @event.each do |event| %>
         <div class="card m-3" style="width: 100%;">
             <div class="card-body">
-                <h3 class="card-title">お正月ミニハッカソン</h3>
-                <h6 class="card-subtitle mb-2 text-muted">言語　Ruby,Python</h6>
-                <p class="card-text">大学生募集中　一緒に作りましょう</p>
-                <a href="#" class="card-link">詳しくみる</a>
+                <h3 class="card-title"><%= event.title %></h3>
+                <h6 class="card-subtitle mb-2 text-muted">言語：<%= event.skill %></h6>
+                <p class="card-text"><%= event.description %></p>
+                <%= link_to("詳しくみる", "/events/#{event.id}/show") %>
+                <a href="#" class="card-link p-1" style="color: grey; border: 1px solid black;">終了済み</a>
             </div>
         </div>
-
-        <div class="card m-3" style="width: 100%;">
-            <div class="card-body">
-                <h3 class="card-title">お正月ミニハッカソン</h3>
-                <h6 class="card-subtitle mb-2 text-muted">言語　Ruby,Python</h6>
-                <p class="card-text">大学生募集中　一緒に作りましょう</p>
-                <a href="#" class="card-link">詳しくみる</a>
-            </div>
-        </div>
+        <% end %>
     </div>
 </div>
