@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get "/" => "home#index"
 
   get "/events/index" => "events#index"
+  get "/events/show" => "events#show"
 end
