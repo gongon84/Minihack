@@ -1,7 +1,18 @@
 // indexページ
+.search_form_wrap {
+    margin-top: 50px;
+    .search_form_group {
+        .label {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+    }
+}
+
 .event-wrap {
     margin-top: 100px;
 }
+
 
 
 // showページ

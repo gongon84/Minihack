@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
     def index
-        @event = Event.all.order("id DESC")
+        # @event = Event.all.order("id DESC")
+        @search = Event.ransack(params[:q])
+        @events = @search.result(distinct: true)
     end
 
     def show

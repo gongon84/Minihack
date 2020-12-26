@@ -1,9 +1,31 @@
 <div class="container">
     <%= link_to("追加", "/events/new", class: "btn btn-primary") %>
+
+    <%# 検索フォーム %>
+    <div class="search_form_wrap">
+        <h3>検索フォーム</h3>
+        <%= search_form_for(@search, url: "/events/index" ) do |f| %>
+            <%= f.select( :sorts, { '並び替え': 'id desc', 'タイトル順': 'title asc', 'タイトル降順': 'title desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }) %>
+
+            <div class="search_form_group">
+            <%= f.label :title, "イベント名", class: "label" %>
+            <%= f.search_field :title_cont %>
+            </div>
+            
+            <div class="search_form_group">
+                <%= f.label :skill_cont, "スキル", class: "label" %>
+                <%= f.search_field :skill_cont %>
+            </div>
+
+            <%= f.submit "検索" %>
+        <% end %>
+    </div>
+
     <div class="event-wrap">
-        <% @event.each do |event| %>
+        <% @events.each do |event| %>
         <div class="card m-3" style="width: 100%;">
             <div class="card-body">
+                <h6 class="card-subtitle"><%= event.created_at %></h6>
                 <h3 class="card-title"><%= event.title %></h3>
                 <h6 class="card-subtitle mb-2 text-muted">言語：<%= event.skill %></h6>
                 <p class="card-text"><%= event.description %></p>
