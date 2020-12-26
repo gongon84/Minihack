@@ -1,7 +1,12 @@
-.fullpage {
-    header {
+.full-page {
+    height: 100%;
+    background-color: #EEF9FF;
+
+    & header {
+        height: 100%;
+        background-color: #DBD0E6;
         .navbar-brand {
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
     
         .nav-item {
