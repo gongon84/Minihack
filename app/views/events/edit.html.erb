@@ -1,0 +1,28 @@
+<div class="container">
+    <%= form_tag("/events/update") do %>
+        <div class="form-group">
+            <input name="id" class="form-control" id="id" type="hidden" value="<%= @event.id %>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">イベント名</label>
+            <input name="title" class="form-control" id="title" value="<%= @event.title %>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">skill</label>
+            <input name="skill" class="form-control" id="skill" value="<%= @event.skill %>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">説明</label>
+            <textarea class="form-control" name="description" id="description" style="height:100px;" value="<%= @event.description %>"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">URL(zoomなどの)</label>
+            <input name="url" class="form-control" id="url" value="<%= @event.url %>">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">画像</label>
+            <input name="image" class="form-control" id="image" value="<%= @event.image %>">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    <% end %>
+</div>

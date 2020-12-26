@@ -18,4 +18,22 @@ class EventsController < ApplicationController
             render("events/new")
         end
     end
+
+    def edit
+        @event = Event.find_by(id: params[:id])
+    end
+
+    def update
+        @event = Event.find_by(id: params[:id])
+        @event.title = params[:title]
+        @event.skill = params[:skill]
+        @event.description = params[:description]
+        @event.url = params[:url]
+        @event.image = params[:image]
+        if @event.save
+            redirect_to("/events/#{@event.id}/show")
+        else
+            render("events/edit")
+        end
+    end
 end
