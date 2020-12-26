@@ -36,4 +36,13 @@ class EventsController < ApplicationController
             render("events/edit")
         end
     end
+
+    def destroy
+        @event = Event.find_by(id: params[:id])
+        if @event.destroy
+            redirect_to("/events/index")
+        else
+            render("events/show")
+        end
+    end
 end
