@@ -1,0 +1,20 @@
+<div class="text-center", style="margin: 70px auto;">
+<h1>作品</h1>
+</div>
+<% if @events.where(status: "終了").size > 0 %> 
+<% @events.where(status: "終了").each do |event| %>
+    <div class="card m-3" style="width: 100%;">
+        <div class="card-body">
+            <h3 class="card-title"><%= event.title %></h3>
+            <h6 class="card-subtitle mb-2"><span class="text-muted">言語：</span><%= event.skill %></h6>
+            <h6>作品URL：<%= link_to("#{event.portfolio}", "#{event.portfolio}", target: :_blank)%></h6>
+            <p class="card-text mb-0"><%= event.portfolio_info %></p>
+            <div class="d-flex">
+                <time datetime="<%= event.created_at %>", class="ml-auto">
+                    <h6 class=""><%= time_ago_in_words(event.created_at) %>前</h6>
+                </time>
+            </div>
+        </div>
+    </div>
+<% end %>
+<% end %>

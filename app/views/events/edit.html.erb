@@ -27,6 +27,10 @@
             <label for="exampleInputPassword1">作品URL</label>
             <input name="portfolio" class="form-control" id="portfolio" value="<%= @event.portfolio %>">
         </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">作品情報</label>
+            <textarea name="portfolio_info" class="form-control" id="portfolio_info" style="height:100px;"><%= @event.portfolio_info %></textarea>
+        </div>
         
         <div class="form-group">
         <label for="exampleInputPassword1">状態</label>

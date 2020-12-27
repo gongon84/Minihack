@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
     def index
-        # @event = Event.all.order("id DESC")
         @search = Event.ransack(params[:q])
         @search.sorts = 'created_at desc' if @search.sorts.empty?
         @events = @search.result(distinct: true)
@@ -34,6 +33,8 @@ class EventsController < ApplicationController
         @event.description = params[:description]
         @event.url = params[:url]
         @event.status = params[:status]
+        @event.portfolio = params[:portfolio]
+        @event.portfolio_info = params[:portfolio_info]
         if @event.save
             redirect_to("/events/#{@event.id}/show")
         else
@@ -48,5 +49,9 @@ class EventsController < ApplicationController
         else
             render("events/show")
         end
+    end
+
+    def table
+        @events = Event.all.order("id DESC")
     end
 end

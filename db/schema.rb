@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_085733) do
     t.string "url"
     t.string "status"
     t.string "portfolio"
+    t.string "portfolio_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
