@@ -1,5 +1,10 @@
 <div class="index-page">
 
+    <%# 追加ボタン %>
+    <div class="mt-5 d-flex justify-content-end">
+        <%= link_to("追加", "/events/new", class: "btn btn-primary") %>
+    </div>
+
     <%# 検索フォーム %>
     <div class="search_form_wrap">
         <h3>検索フォーム</h3>
@@ -19,7 +24,6 @@
             <%= f.submit "検索" %>
         <% end %>
     </div>
-    <%= link_to("追加", "/events/new", class: "btn btn-primary") %>
 
     <div class="event-wrap">
         <% @events.each do |event| %>
