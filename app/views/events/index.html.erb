@@ -7,9 +7,7 @@
 
     <%# 検索フォーム %>
     <div class="search_form_wrap">
-        <h3>検索フォーム</h3>
         <%= search_form_for(@search, url: "/events/index" ) do |f| %>
-            <%= f.select( :sorts, { '並び替え': 'id desc', 'タイトル順': 'title asc', 'タイトル降順': 'title desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }) %>
 
             <div class="search_form_group">
             <%= f.label :title, "イベント名", class: "label" %>
@@ -17,11 +15,22 @@
             </div>
             
             <div class="search_form_group">
-                <%= f.label :skill_cont, "スキル", class: "label" %>
+                <%= f.label :skill, "言語　　　", class: "label" %>
                 <%= f.search_field :skill_cont %>
             </div>
 
-            <%= f.submit "検索" %>
+            <div class="search_form_group">
+                <%= f.label :accept_num, "募集人数　", class: "label" %>
+                <%= f.search_field :accept_num_cont %>
+            </div>
+
+            <%# f.select :status_cont, options_from_collection_for_select(Event.all, :status, :status, 2) %>
+
+            <div class="my-2">
+            <%= f.select( :sorts, { '並び替え': 'id desc', 'タイトル順': 'title asc', 'タイトル降順': 'title desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }) %>
+            </div>
+
+            <%= f.submit "検索", class: "mt-1"%>
         <% end %>
     </div>
 
@@ -29,12 +38,23 @@
         <% @events.each do |event| %>
         <div class="card m-3" style="width: 100%;">
             <div class="card-body">
-                <h6 class="card-subtitle"><%= event.created_at %></h6>
+                <% if event.status == "募集中" %>
+                    <h6 class="btn btn-outline-danger"><%= event.status %></h6>
+                <% elsif event.status == "開催中" %>
+                    <h6 class="btn btn-outline-success"><%= event.status %></h6>
+                <% elsif event.status == "終了" %>
+                    <h6 class="btn btn-outline-secondary"><%= event.status %></h6> 
+                <% end %>
                 <h3 class="card-title"><%= event.title %></h3>
-                <h6 class="card-subtitle mb-2 text-muted">言語：<%= event.skill %></h6>
+                <h6 class="card-subtitle mb-2"><span class="text-muted">言語：</span><%= event.skill %></h6>
+                <h6 class="card-subtitle mb-2"><span class="text-muted">募集人数：</span><%= event.accept_num %></h6>
                 <p class="card-text"><%= event.description %></p>
-                <%= link_to("詳しくみる", "/events/#{event.id}/show") %>
-                <a href="#" class="card-link p-1" style="color: grey; border: 1px solid black;">終了済み</a>
+                <div class="d-flex">
+                    <%= link_to("詳しくみる", "/events/#{event.id}/show") %>
+                    <time datetime="<%= event.created_at %>", class="ml-auto">
+                        <h6 class=""><%= time_ago_in_words(event.created_at) %>前</h6>
+                    </time>
+                </div>
             </div>
         </div>
         <% end %>

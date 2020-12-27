@@ -1,16 +1,38 @@
 <div class="show-page">
+
+    <%# 戻るボタン %>
+    <div class="mt-5">
+        <%= link_to("戻る", "/events/index", class: "btn btn-primary") %>
+    </div>
+
     <div class="event-show">
         <%# 開始前 %>
         <div class="card mb-3">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
             <div class="card-body">
+                <% if @event.status == "募集中" %>
+                    <h6 class="btn btn-outline-danger"><%= @event.status %></h6>
+                <% elsif @event.status == "開催中" %>
+                    <h6 class="btn btn-outline-success"><%= @event.status %></h6>
+                <% elsif @event.status == "終了" %>
+                    <h6 class="btn btn-outline-secondary"><%= @event.status %></h6> 
+                <% end %>
                 <h5 class="card-title"><%= @event.title %></h5>
                 <h6>言語：<%= @event.skill %></h6>
+                <h6>募集人数：<%= @event.accept_num %></h6>
+                <% if @event.status == "終了" %>
+                    <h6>作品URL：<%= link_to("#{@event.portfolio}", "#{@event.url}", target: :_blank)%></h6>
+                <% else %>
+                    <h6>URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
+                <% end %>
                 <p class="card-text"><%= @event.description %></p>
-                <%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <%= link_to("編集", "/events/#{@event.id}/edit") %>
-                <%= link_to("削除", "/events/#{@event.id}/destroy", method: "post", data: {confirm: '【確認】このイベントを削除してよろしいですか？'}) %>
+                <div class="d-flex">
+                    <%= link_to("編集", "/events/#{@event.id}/edit") %>
+                    <%= link_to("削除", "/events/#{@event.id}/destroy", method: "post", data: {confirm: '【確認】このイベントを削除してよろしいですか？'}) %>
+                    <time datetime="<%= @event.created_at %>", class="ml-auto">
+                        <h6 class=""><%= time_ago_in_words(@event.created_at) %>前</h6>
+                    </time>
+                </div>
             </div>
         </div>
 

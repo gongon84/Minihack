@@ -2,8 +2,12 @@
 .index-page {
     height: 100%;
     // background-color: black;
+
     .search_form_wrap {
-        margin-top: 50px;
+        margin-top: 30px;
+        padding: 30px;
+        background-color: white;
+        border: 1px solid black;
         .search_form_group {
             .label {
                 font-size: 1rem;

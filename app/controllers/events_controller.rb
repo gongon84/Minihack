@@ -2,6 +2,7 @@ class EventsController < ApplicationController
     def index
         # @event = Event.all.order("id DESC")
         @search = Event.ransack(params[:q])
+        @search.sorts = 'created_at desc' if @search.sorts.empty?
         @events = @search.result(distinct: true)
     end
 
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = Event.new(title: params[:title], skill: params[:skill], description: params[:description])
+        @event = Event.new(title: params[:title], skill: params[:skill], accept_num: params[:accept_num], description: params[:description], status: "募集中")
         if @event.save
             redirect_to("/events/index")
         else
@@ -29,9 +30,10 @@ class EventsController < ApplicationController
         @event = Event.find_by(id: params[:id])
         @event.title = params[:title]
         @event.skill = params[:skill]
+        @event.accept_num = params[:accept_num]
         @event.description = params[:description]
         @event.url = params[:url]
-        @event.image = params[:image]
+        @event.status = params[:status]
         if @event.save
             redirect_to("/events/#{@event.id}/show")
         else

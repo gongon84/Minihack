@@ -7,12 +7,14 @@
         background-color: #DBD0E6;
         .navbar-brand {
             font-size: 3.5rem;
+            color: #4E454A;
         }
     
         .nav-item {
             font-size: 1.4rem;
             margin-left: 30px;
             margin-top: 5px;
+            color: #4E454A;
         }
 
         .nav-item.active {
@@ -29,7 +31,7 @@
         font-size: 2rem;
         border: 2px solid grey;
         padding: 40px;
-        border-radius: 100%;
+        // border-radius: 100%;
         color: #555;
         background-color: #CEF9DC;
         text-decoration: none;

@@ -15,9 +15,11 @@ ActiveRecord::Schema.define(version: 2020_12_26_085733) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "skill"
+    t.string "accept_num"
     t.string "description"
-    t.string "image"
     t.string "url"
+    t.string "status"
+    t.string "portfolio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

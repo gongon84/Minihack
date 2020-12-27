@@ -8,21 +8,35 @@
             <input name="title" class="form-control" id="title" value="<%= @event.title %>">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">skill</label>
+            <label for="exampleInputPassword1">言語</label>
             <input name="skill" class="form-control" id="skill" value="<%= @event.skill %>">
         </div>
         <div class="form-group">
+            <label for="exampleInputPassword1">募集人数</label>
+            <input name="accept_num" class="form-control" id="accept_num" value="<%= @event.accept_num %>">
+        </div>
+        <div class="form-group">
             <label for="exampleInputPassword1">説明</label>
-            <textarea class="form-control" name="description" id="description" style="height:100px;" value="<%= @event.description %>"></textarea>
+            <textarea class="form-control" name="description" id="description" style="height:100px;"><%= @event.description %></textarea>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">URL(zoomなどの)</label>
             <input name="url" class="form-control" id="url" value="<%= @event.url %>">
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">画像</label>
-            <input name="image" class="form-control" id="image" value="<%= @event.image %>">
+            <label for="exampleInputPassword1">作品URL</label>
+            <input name="portfolio" class="form-control" id="portfolio" value="<%= @event.portfolio %>">
         </div>
+        
+        <div class="form-group">
+        <label for="exampleInputPassword1">状態</label>
+        <select name="status">
+        <option value="募集中">募集中</option>
+        <option value="開催中">開催中</option>
+        <option value="終了">終了</option>
+        </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     <% end %>
 </div>
