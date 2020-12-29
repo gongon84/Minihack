@@ -1,12 +1,15 @@
 .full-page {
     height: 100%;
     background-color: #EEF9FF;
+    // background-color: #B0DEEC;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 
     & header {
         height: 100%;
-        background-color: #DBD0E6;
+        background-color: white;
         .navbar-brand {
             font-size: 3.5rem;
+            padding: 10px 0;
             color: #4E454A;
         }
     
@@ -14,26 +17,22 @@
             font-size: 1.4rem;
             margin-left: 30px;
             margin-top: 5px;
-            color: #4E454A;
+            & .nav-link {
+                color: #292929;
+            }
         }
 
-        .nav-item.active {
-            margin-left: 200px;
+        .nav-item.nav-event {
+            margin-left: 100px;
         }
     }   
 }
 
 // indexページ
-.service-wrap {
-    margin-top: 200px;
-    .app {
-        width: 30%;
+.sub-title {
+    h1 {
+        width: 70%;
+        margin: 0 auto;
         font-size: 2rem;
-        border: 2px solid grey;
-        padding: 40px;
-        // border-radius: 100%;
-        color: #555;
-        background-color: #CEF9DC;
-        text-decoration: none;
     }
 }

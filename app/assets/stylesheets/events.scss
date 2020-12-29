@@ -3,16 +3,30 @@
     height: 100%;
     // background-color: black;
 
-    .search_form_wrap {
+    .search-wrap {
         margin-top: 30px;
-        padding: 30px;
-        background-color: white;
         border: 1px solid black;
-        .search_form_group {
-            .label {
-                font-size: 1rem;
-                margin: 10px 0;
+
+        & p {
+            padding: 12px 30px;
+        }
+
+        .search_form_wrap {
+            padding: 10px 30px 30px 30px;
+            background-color: white;
+            .search_form_group {
+                margin-right: auto;
+                .label {
+                    font-size: 1rem;
+                    margin: 10px 0;
+                }
             }
+
+            .keyword {
+                margin-right: 30px;
+            }
+
+            #q_sorts { padding: 4px; width: 20%; }
         }
     }
 

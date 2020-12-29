@@ -1,13 +1,27 @@
-<div class="home-page" style="height: 600px;">
-    <div class="service-wrap row text-center">
-        <div class="col-4">
-            <%= link_to("イベント一覧", "/events/index", class: "app") %>
+<div class="home-page" style="background-color: white;">
+    <div class="row service-wrap pt-2" style="height: 100%; color:#292929; border-bottom: 2px solid #D8D8D8;">
+        <div class="col-sm-6 text-center pb-5" style="background-color: #FFFFFF;">
+            <h1 style="margin-top: 100px; margin-bottom: 80px; font-size: 2.6rem;">手軽なマッチングで</h1>
+            <%= image_tag "/assets/ネットワーク３.png", height: "250px" %>
         </div>
-        <div class="col-4">
-            <%= link_to("作品一覧", "/events/table", class: "app") %>
-        </div>
-        <div class="col-4">
-            <%= link_to("使い方", "#", class: "app") %>
+        <div class="col-sm-6 text-center" style="background-color: #6C98B8;">
+            <%= image_tag "/assets/pro.png", height: "250px", style: "margin-top: 100px; margin-bottom: 80px;" %>
+            <h1 class="text-center" style="font-size: 2.6rem; color: white;">ハッカソンを体験</h1>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12" style="margin-top: 80px; padding-bottom: 100px; border-bottom: 2px solid #D8D8D8;">
+            <h1 class="text-center">こんな方にオススメ！</h1>
+            <div class="sub-title" style="margin-top: 60px;">
+                <h1>・ハッカソンをしたい方</h1>
+                <h1>・チーム開発の練習したい方</h1>
+                <h1>・1人での開発に飽きた方</h1>
+            </div>
+        </div>
+        <div class="col-12 text-center" style="margin: 80px auto;">
+            <h1>無料ではじめる</h1>
+            <%= link_to("利用する", "/events/index", class: "btn btn-secondary btn-lg mt-3") %>
+        </div>
+    </div>
+
 </div>

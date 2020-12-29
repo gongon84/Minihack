@@ -34,13 +34,28 @@
         
         <div class="form-group">
         <label for="exampleInputPassword1">状態</label>
-        <select name="status">
-        <option value="募集中">募集中</option>
-        <option value="開催中">開催中</option>
-        <option value="終了">終了</option>
-        </select>
+        <%# 条件分岐 %>
+        <% if @event.status == "募集中" %>
+        <p>
+        <input type="radio" name="status" value="募集中" checked>募集中
+        <input type="radio" name="status" value="開催中">開催中
+        <input type="radio" name="status" value="終了">終了
+        </p>
+        <% elsif @event.status == "開催中" %>
+        <p>
+        <input type="radio" name="status" value="募集中">募集中
+        <input type="radio" name="status" value="開催中" checked>開催中
+        <input type="radio" name="status" value="終了">終了
+        </p>
+        <% elsif @event.status == "終了" %>
+        <p>
+        <input type="radio" name="status" value="募集中">募集中
+        <input type="radio" name="status" value="開催中">開催中
+        <input type="radio" name="status" value="終了" checked>終了
+        </p>
+        <% end %>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">編集する</button>
     <% end %>
 </div>
