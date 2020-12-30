@@ -1,22 +1,36 @@
+<div class="table-page">
 <div class="container">
 <div class="text-center", style="margin: 70px auto;">
 <h1>作品</h1>
 </div>
+
+<div class="row">
 <% if @events.where(status: "終了").size > 0 %> 
-<% @events.where(status: "終了").each do |event| %>
-    <div class="card m-3" style="width: 100%;">
-        <div class="card-body">
-            <h3 class="card-title"><%= event.title %></h3>
-            <h6 class="card-subtitle mb-2"><span class="text-muted">言語：</span><%= event.skill %></h6>
-            <h6>作品URL：<%= link_to("#{event.portfolio}", "#{event.portfolio}", target: :_blank)%></h6>
-            <p class="card-text mb-0"><%= event.portfolio_info %></p>
-            <div class="d-flex">
+    <% @events.where(status: "終了").each do |event| %>
+        <div class="col-md-4 my-0" style="">
+            <%# 上端揃え %>
+            <div class="card mb-4 shadow-sm" style="vertical-align:top;">
+                <%= image_tag "/assets/noimage.png", height: "250px", class: "card-img-top" %>
+                <div class="card-body">
+                <h4 class="card-title"><%= event.title %></h4>
+                <p class="card-text"><%= event.portfolio_info %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <%= link_to("作品URL", "#{event.portfolio}", target: :_blank, class: "btn btn-sm btn-outline-secondary") %>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">発表スライド</button>
+                </div>
+                <small class="text-muted">
                 <time datetime="<%= event.created_at %>", class="ml-auto">
-                    <h6 class=""><%= time_ago_in_words(event.created_at) %>前</h6>
+                    <%= time_ago_in_words(event.created_at) %>前
                 </time>
+                </small>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+    <% end %>
 <% end %>
-<% end %>
+</div>
+
+</div>
 </div>

@@ -34,7 +34,7 @@
 
             <div class="mt-2">
             <%= f.label :status, "開催状況", class: "label", style: "margin-right: 40px;" %>
-            <%= f.select :status_cont, options_from_collection_for_select(Event.all, :status, :status, 2), { include_blank: '選択してください'}, class: "p-1", style: "width: 20%" %>
+            <%= f.select :status_eq, {"募集中": "募集中", "開催中": "開催中", "終了": "終了"}, { include_blank: '選択してください'}, class: "p-1", style: "width: 20%" %>
             </div>
 
             <div class="mt-2">
