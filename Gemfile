@@ -64,8 +64,5 @@ group :production do
   gem 'pg'
 end
 
-# 検索機能
-gem 'ransack'
-
-# 日本語化
-gem 'rails-i18n'
+gem 'ransack' # 検索機能
+gem 'rails-i18n' # 日本語化

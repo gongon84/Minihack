@@ -1,0 +1,18 @@
+<div class="card p-2 my-4">
+    <% if comments.where(event_id: event.id).size > 0 %>
+        <% comments.where(event_id: event.id).each do |comment| %>
+            <div class="row border-bottom p-2 py-3">
+                <div class="col-11">
+                    <h6><%= comment.id %>：<%= comment.name %></h6>
+                    <h5><%= comment.comment %></h5>
+                </div>
+                <div class="col-1 d-flex">
+                    <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
+                    class: "btn btn-outline-secondary align-self-center") %>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <h5 class="my-4">まだコメントはありません</h5>
+    <% end %>
+</div>

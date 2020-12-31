@@ -1,0 +1,11 @@
+<h3>コメント</h3>
+<%= form_with url: "/comments/#{event.id}/create" do |f| %>
+    <%= f.hidden_field :event_id, :value => event.id %>
+                
+    <%= f.text_field :name, :placeholder => "名前（ゲスト）", class: "pb-3 px-2 w-25" %>
+        
+    <div class="mt-0 d-flex">        
+        <%= f.text_area :comment, :placeholder => "コメントを追加…", class: "pb-4 px-2 w-50 align-self-center" %>
+        <%= f.submit "送信", class: "btn btn-secondary align-self-end" %>
+    </div>
+<% end %>

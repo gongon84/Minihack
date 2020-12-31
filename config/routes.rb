@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # home
   get "/" => "home#index"
   get "/test" => "home#test"
 
@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   post "/events/create" => "events#create"
   get "/events/:id/edit" => "events#edit"
   post "/events/:id/destroy" => "events#destroy"
+
+  # comments
+  post 'comments/:event_id/create' => "comments#create"
+  post 'comments/:event_id/:comment_id/destroy' => "comments#destroy"
+
 end

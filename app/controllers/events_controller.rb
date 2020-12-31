@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
+        @comments = Comment.all
     end
 
     def new
