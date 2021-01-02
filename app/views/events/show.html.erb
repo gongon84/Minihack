@@ -36,6 +36,12 @@
             </div>
         </div>
 
+        <%# twitterシェアボタン %>
+        <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@event.title}を開催中！", title: 'Twitter', target: '_blank', class: "btn btn-default", style: "background-color: #3EA7E8;" do %>
+            <i class="fab fa-twitter" style="color:white"></i>
+            <span style="color:white;">ツイート</span>
+        <% end %>
+
         <%# コメント %>
         <div id="comments_form" class="mt-5">
             <%= render partial: 'comments/form', locals: { event: @event } %>
@@ -44,23 +50,5 @@
             <%= render partial: 'comments/index', locals: { event: @event, comments: @comments } %>
         </div>
         
-
-        <%# 終了 %>
-<%
-=begin
-%>
-        <div class="card mb-3">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
-            <div class="card-body">
-                <h5 class="card-title">お正月ミニハッカソン</h5>
-                <p class="card-text">python少々できます。誰か一緒に作りましょう</p>
-                <%= link_to("制作物リンク", "#")%>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <button>終了済み</button>
-            </div>
-        </div>
-<%
-=end
-%>
     </div>
 </div>
