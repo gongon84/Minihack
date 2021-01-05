@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+    before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+    
     def index
         @search = Event.ransack(params[:q])
         @search.sorts = 'created_at desc' if @search.sorts.empty?

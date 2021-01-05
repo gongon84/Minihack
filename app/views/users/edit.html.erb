@@ -1,0 +1,69 @@
+<h3>編集</h3>
+
+<% @user.errors.full_messages.each do |message| %>
+    <div class="form-error">
+        <h2 class="text-danger"><%= message %></h2>
+    </div>
+<% end %>
+
+
+<%= form_with url: "/users/update", local: true, method: 'POST' do |f| %>
+
+    <div>
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email, value: @user.email %>
+    </div>
+
+    <div>
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name, value: @user.name %>
+    </div>
+
+    <div>
+        <%= f.label :old, '年齢' %>
+        <%= f.text_field :old, value: @user.old %>
+    </div>
+
+    <div>
+        <%= f.label :profile, 'プロフィール' %>
+        <%= f.text_area :profile, value: @user.profile %>
+    </div>
+    
+        
+    <div>        
+        <%= f.submit "送信" %>
+    </div>
+<% end %>
+
+
+
+<%
+=begin
+%>
+<%= form_tag("/users/update") do %>
+        <div class="form-group">
+            <input name="id" class="form-control" id="id" type="hidden" value="<%= @user.id %>">
+        </div>
+        <div class="form-group">
+            <label>名前</label>
+            <input name="name" class="form-control" id="name" value="<%= @user.name %>">
+        </div>
+        <div class="form-group">
+            <label>メール</label>
+            <input name="email" class="form-control" id="email" value="<%= @user.email %>">
+        </div>
+        <div class="form-group">
+            <label>年齢</label>
+            <input name="old" class="form-control" id="old" value="<%= @user.old %>">
+        </div>
+        <div class="form-group">
+            <label>プロフィール</label>
+            <input name="profile" class="form-control" id="profile" value="<%= @user.profile %>">
+        </div>
+
+        <button type="submit" class="btn btn-primary">編集する</button>
+    <% end %>
+
+<%
+=end
+%>

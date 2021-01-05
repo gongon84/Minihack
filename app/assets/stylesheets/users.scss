@@ -1,0 +1,28 @@
+// showページ
+.show-page {
+    position: relative;
+    height:1000px;
+
+    .head {
+        height: 150px;
+        background-color: #7D7D7D;
+    }
+
+    .main {
+        position: absolute;
+        top:90px;
+        left:50%;
+        transform: translate(-50%, 0);
+        background-color: white;
+        border-radius:0.7%; width:70%;
+
+        .profile-image {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #6C757D;
+        }
+    }
+}

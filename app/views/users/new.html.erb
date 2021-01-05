@@ -1,0 +1,9 @@
+<h3>新規登録</h3>
+
+<% @user.errors.full_messages.each do |message| %>
+    <div class="form-error">
+        <h2 class="text-danger"><%= message %></h2>
+    </div>
+<% end %>
+
+<%= render partial: 'form'  %>

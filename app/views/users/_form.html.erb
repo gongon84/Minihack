@@ -1,0 +1,26 @@
+<%= form_with url: "/users/create", local: true do |f| %>
+
+    <div>
+        <%= f.label :name, 'ニックネーム' %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email %>
+    </div>
+
+    <div>
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation, 'パスワード確認' %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+        
+    <div>        
+        <%= f.submit "送信" %>
+    </div>
+<% end %>
