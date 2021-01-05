@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   
-  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:edit, :update, :destroy]
 
   def show
-    @user = current_user
+    @user = User.find_by(id: params[:id])
   end
 
   def edit

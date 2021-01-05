@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = Event.new(title: params[:title], skill: params[:skill], accept_num: params[:accept_num], description: params[:description], status: "募集中")
+        @event = Event.new(user_id: current_user.id, title: params[:title], skill: params[:skill], accept_num: params[:accept_num], description: params[:description], status: "募集中")
         if @event.save
             redirect_to("/events/index")
         else

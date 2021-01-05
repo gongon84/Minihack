@@ -61,6 +61,9 @@
                     <h6 class="btn btn-outline-secondary"><%= event.status %></h6> 
                 <% end %>
                 <h3 class="card-title"><%= event.title %></h3>
+                <h6 class="card-subtitle mb-2"><span class="text-muted">作成者：</span>
+                    <%= link_to("#{event.user.name}", "/users/#{event.user.id}/show") %>
+                </h6>
                 <h6 class="card-subtitle mb-2"><span class="text-muted">言語：</span><%= event.skill %></h6>
                 <h6 class="card-subtitle mb-2"><span class="text-muted">募集人数：</span><%= event.accept_num %></h6>
                 <p class="card-text"><%= event.description %></p>
