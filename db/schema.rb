@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2021_01_05_022111) do
 
   create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "event_id"
     t.string "name"
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -47,4 +49,5 @@ ActiveRecord::Schema.define(version: 2021_01_05_022111) do
   end
 
   add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
 end
