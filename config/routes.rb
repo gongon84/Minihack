@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/events/index" => "events#index"
   get "/events/:id/show" => "events#show"
   get "/events/new" => "events#new"
-  get "/events/table" => "events#table"
   post "/events/update" => "events#update"
   post "/events/create" => "events#create"
   get "/events/:id/edit" => "events#edit"

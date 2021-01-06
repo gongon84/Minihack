@@ -52,8 +52,4 @@ class EventsController < ApplicationController
             render("events/show")
         end
     end
-
-    def table
-        @events = Event.all.order("id DESC")
-    end
 end
