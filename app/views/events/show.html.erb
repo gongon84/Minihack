@@ -55,7 +55,7 @@
                     <% end %>
                 <% else %>
                     <h3>作品情報を入力しよう</h3>
-                    <% if current_user && current_user.id == @work.event.user_id %>
+                    <% if current_user && current_user.id == @event.user.id %>
                     <%= link_to("作品情報を入力", "/works/#{@event.id}/new", class: "btn btn-outline-primary") %>
                     <% end %>
                 <% end %>

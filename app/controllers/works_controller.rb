@@ -21,8 +21,8 @@ class WorksController < ApplicationController
   end
 
   def create
-    @works = Work.new(work_params)
-    if @works.save
+    @work = Work.new(work_params)
+    if @work.save
       redirect_to("/events/#{@work.event_id}/show", notice: "登録しました")
     else
       render("events/show", notice: "登録できませんでした")
