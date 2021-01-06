@@ -23,7 +23,7 @@
                     <h6>URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
                     <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@event.description.split("\n"), tag(:br)) %></p>
                     <div class="d-flex">
-                        <% if current_user.id == @event.user.id %>
+                        <% if current_user && current_user.id == @event.user.id %>
                             <%= link_to("イベントの編集", "/events/#{@event.id}/edit", class: "mr-2 btn btn-outline-secondary") %>
                             <%= link_to("イベントの削除", "/events/#{@event.id}/destroy", class: "mr-3 btn btn-outline-secondary", 
                             method: "post", data: {confirm: '【確認】このイベントを削除してよろしいですか？'}) %>
@@ -48,14 +48,14 @@
                     <h2 class="card-title mt-2"><%= @work.title %></h2>
                     <h6>作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
                     <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
-                    <% if current_user.id == @work.event.user_id %>
+                    <% if current_user && current_user.id == @work.event.user_id %>
                         <div class="btn-group">
                             <%= link_to("サービス概要を編集", "/works/#{@event.id}/edit", class: "mr-3 btn btn-outline-secondary") %>
                         </div>
                     <% end %>
                 <% else %>
                     <h3>作品情報を入力しよう</h3>
-                    <% if current_user.id == @work.event.user_id %>
+                    <% if current_user && current_user.id == @work.event.user_id %>
                     <%= link_to("作品情報を入力", "/works/#{@event.id}/new", class: "btn btn-outline-primary") %>
                     <% end %>
                 <% end %>

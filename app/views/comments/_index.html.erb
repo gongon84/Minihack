@@ -6,10 +6,20 @@
                     <h6><%= comment.id %>：<%= comment.name %></h6>
                     <h5><%= comment.comment %></h5>
                 </div>
-                <div class="col-1 d-flex">
-                    <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
-                    class: "btn btn-outline-secondary align-self-center") %>
-                </div>
+                <%# アカウントユーザーとそうでない人で分ける %>
+                <% if comment.user_id %>
+                    <% if current_user && current_user.id == comment.user_id %>
+                    <div class="col-1 d-flex">
+                        <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
+                        class: "btn btn-outline-secondary align-self-center") %>
+                    </div>
+                    <% end %>
+                <% else %>
+                    <div class="col-1 d-flex">
+                        <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
+                        class: "btn btn-outline-secondary align-self-center") %>
+                    </div>
+                <% end %>
             </div>
         <% end %>
     <% else %>
