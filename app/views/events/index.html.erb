@@ -68,8 +68,8 @@
                 <h6 class="card-subtitle mb-2"><span class="text-muted">募集人数：</span><%= event.accept_num %></h6>
                 <p class="card-text"><%= event.description %></p>
                 <div class="d-flex">
-                    <%= link_to("詳しくみる", "/events/#{event.id}/show") %>
-                    <time datetime="<%= event.created_at %>", class="ml-auto">
+                    <%= link_to("詳しくみる", "/events/#{event.id}/show", class: "btn btn-outline-primary") %>
+                    <time datetime="<%= event.created_at %>", class="ml-auto align-self-end">
                         <h6 class=""><%= time_ago_in_words(event.created_at) %>前</h6>
                     </time>
                 </div>

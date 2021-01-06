@@ -2,15 +2,17 @@
     <div class="head"></div>
     <div class="main container">
         <%= image_tag "/assets/test.png", class: "profile-image mt-4" %>
-        <div class="text-center mt-5">
+        <div class="text-center mt-3">
             <h2><%= @user.name %>（<%= @user.old %>）</h2>
             <% if @user.profile %>
-            <h3 class="mt-5"><%= safe_join(@user.profile.split("\n"), tag(:br)) %></h3>
+            <h3 class="mt-5 p-3" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@user.profile.split("\n"), tag(:br)) %></h3>
+            <% else %>
+                <h3 class="mt-5 p-3" style="background-color:#DDD; border-radius:10px; height:140px;">プロフィールが入力していません</h3> 
             <% end %>
         </div>
-        <% if current_user %>
-            <%= link_to("編集", "/users/#{@user.id}/edit") %>
-            <%= link_to("削除", "/users/#{@user.id}/destroy", method: 'POST') %>
+        <% if current_user && current_user.id == @user.id %>
+            <%= link_to("編集", "/users/#{@user.id}/edit", class: "btn btn-outline-secondary") %>
+            <%= link_to("削除", "/users/#{@user.id}/destroy", method: 'POST', class: "btn btn-outline-secondary") %>
         <% end %>
     </div>
 </div>
