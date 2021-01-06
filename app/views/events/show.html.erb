@@ -6,44 +6,63 @@
     </div>
 
     <div class="event-show">
-        <%# 開始前 %>
+        <%# イベント %>
         <div class="card mb-3">
-            <div class="card-body">
-                <% if @event.status == "募集中" %>
-                    <h6 class="btn btn-outline-danger"><%= @event.status %></h6>
-                <% elsif @event.status == "開催中" %>
-                    <h6 class="btn btn-outline-success"><%= @event.status %></h6>
-                <% elsif @event.status == "終了" %>
-                    <h6 class="btn btn-outline-secondary"><%= @event.status %></h6> 
-                <% end %>
-                <h5 class="card-title"><%= @event.title %></h5>
-                <h6>作成者：<%= link_to("#{@event.user.name}", "/users/#{@event.user.id}/show") %></h6>
-                <h6>言語：<%= @event.skill %></h6>
-                <h6>募集人数：<%= @event.accept_num %></h6>
-                <% if @event.status == "終了" %>
-                    <h6>作品URL：<%= link_to("#{@event.portfolio}", "#{@event.url}", target: :_blank)%></h6>
-                    <p class="card-text"><%= @event.portfolio_info %></p>
-                <% else %>
-                    <h6>URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
-                    <p class="card-text"><%= @event.description %></p>
-                <% end %>
-                <div class="d-flex">
-                    <% if current_user %>
-                    <%= link_to("編集", "/events/#{@event.id}/edit", class: "mr-2") %>
-                    <%= link_to("削除", "/events/#{@event.id}/destroy", method: "post", data: {confirm: '【確認】このイベントを削除してよろしいですか？'}) %>
+                <div class="card-body">
+                    <% if @event.status == "募集中" %>
+                        <h6 class="btn btn-outline-danger"><%= @event.status %></h6>
+                    <% elsif @event.status == "開催中" %>
+                        <h6 class="btn btn-outline-success"><%= @event.status %></h6>
+                    <% elsif @event.status == "終了" %>
+                        <h6 class="btn btn-outline-secondary"><%= @event.status %></h6>
                     <% end %>
-                    <time datetime="<%= @event.created_at %>", class="ml-auto">
-                        <h6 class=""><%= time_ago_in_words(@event.created_at) %>前</h6>
-                    </time>
+                    <h2 class="card-title mt-2"><%= @event.title %></h2>
+                    <h6>作成者：<%= link_to("#{@event.user.name}", "/users/#{@event.user.id}/show") %></h6>
+                    <h6>言語：<%= @event.skill %></h6>
+                    <h6>募集人数：<%= @event.accept_num %></h6>
+                    <h6>URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
+                    <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@event.description.split("\n"), tag(:br)) %></p>
+                    <div class="d-flex">
+                        <% if current_user.id == @event.user.id %>
+                            <%= link_to("イベントの編集", "/events/#{@event.id}/edit", class: "mr-2 btn btn-outline-secondary") %>
+                            <%= link_to("イベントの削除", "/events/#{@event.id}/destroy", class: "mr-3 btn btn-outline-secondary", 
+                            method: "post", data: {confirm: '【確認】このイベントを削除してよろしいですか？'}) %>
+                        <% end %>
+                        <%# twitterシェアボタン %>
+                        <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@event.title}を開催中！&hashtags=minihack&hashtags=ハッカソン", title: 'Twitter', target: '_blank', class: "btn btn-default", style: "background-color: #3EA7E8;" do %>
+                            <i class="fab fa-twitter" style="color:white"></i>
+                            <span style="color:white;">メンバーを募集</span>
+                        <% end %>
+                        <time datetime="<%= @event.created_at %>", class="ml-auto align-self-end">
+                            <h6><%= time_ago_in_words(@event.created_at) %>前</h6>
+                        </time>
+                    </div>
                 </div>
-            </div>
         </div>
 
-        <%# twitterシェアボタン %>
-        <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{@event.title}を開催中！", title: 'Twitter', target: '_blank', class: "btn btn-default", style: "background-color: #3EA7E8;" do %>
-            <i class="fab fa-twitter" style="color:white"></i>
-            <span style="color:white;">ツイート</span>
-        <% end %>
+        <%# 作品 %>
+        <% if @event.status == "終了" %>
+            <div class="card mb-3">
+                <div class="card-body">
+                <% if @work %>
+                    <h2 class="card-title mt-2"><%= @work.title %></h2>
+                    <h6>作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
+                    <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
+                    <% if current_user.id == @work.event.user_id %>
+                        <div class="btn-group">
+                            <%= link_to("サービス概要を編集", "/works/#{@event.id}/edit", class: "mr-3 btn btn-outline-secondary") %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <h3>作品情報を入力しよう</h3>
+                    <% if current_user.id == @work.event.user_id %>
+                    <%= link_to("作品情報を入力", "/works/#{@event.id}/new", class: "btn btn-outline-primary") %>
+                    <% end %>
+                <% end %>
+                </div>
+            </div>
+         <% end %>
+
 
         <%# コメント %>
         <div id="comments_form" class="mt-5">

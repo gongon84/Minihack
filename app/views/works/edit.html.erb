@@ -1,0 +1,24 @@
+<div class="container">
+<%= form_with url: "/works/#{@work.event_id}/update" do |f| %>
+    <%= f.hidden_field :event_id, :value => @work.event_id %>
+        
+    <div class="my-2">
+        <h5><%= f.label :title, '作品名' %></h5>
+        <%= f.text_field :title, value: @work.title, class: "py-2", size: "80x2" %>
+    </div>
+
+    <div class="my-2">
+        <h5><%= f.label :portfolio_url, '作品URL' %></h5>
+        <%= f.text_field :portfolio_url, value: @work.portfolio_url, class: "py-1", size: "80x2" %>
+    </div>
+
+    <div class="my-2">
+        <h5><%= f.label :profile, '作品概要' %></h5>
+        <%= f.text_area :profile, value: @work.profile, class: "py-1", size: "80x5"  %>
+    </div>
+        
+    <div class="my-2">        
+        <%= f.submit "編集" %>
+    </div>
+<% end %>
+</div>

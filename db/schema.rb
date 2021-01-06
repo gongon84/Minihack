@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_022111) do
+ActiveRecord::Schema.define(version: 2021_01_06_061105) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(version: 2021_01_05_022111) do
     t.string "description"
     t.string "url"
     t.string "status"
-    t.string "portfolio"
-    t.string "portfolio_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
@@ -50,7 +48,19 @@ ActiveRecord::Schema.define(version: 2021_01_05_022111) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "works", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "title"
+    t.string "portfolio_url"
+    t.string "profile"
+    t.string "image_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_works_on_event_id"
+  end
+
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "works", "events"
 end

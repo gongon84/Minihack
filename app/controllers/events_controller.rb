@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find_by(id: params[:id])
+        @work = Work.find_by(event_id: params[:id])
         @comments = Comment.all
     end
 
@@ -36,8 +37,6 @@ class EventsController < ApplicationController
         @event.description = params[:description]
         @event.url = params[:url]
         @event.status = params[:status]
-        @event.portfolio = params[:portfolio]
-        @event.portfolio_info = params[:portfolio_info]
         if @event.save
             redirect_to("/events/#{@event.id}/show")
         else

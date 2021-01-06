@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   get "/events/:id/edit" => "events#edit"
   post "/events/:id/destroy" => "events#destroy"
 
+  # works
+  get 'works/table' => 'works#table'
+  get 'works/:event_id/edit' => 'works#edit'
+  get 'works/:event_id/new' => 'works#new'
+  post 'works/:event_id/update' => 'works#update'
+  post 'works/:event_id/create' => 'works#create'
+  post 'workss/:event_id/destroy' => 'works#destroy'
+
   # comments
   post 'comments/:event_id/create' => "comments#create"
   post 'comments/:event_id/:comment_id/destroy' => "comments#destroy"

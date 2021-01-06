@@ -8,8 +8,6 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :description
       t.string :url
       t.string :status
-      t.string :portfolio
-      t.string :portfolio_info
 
       t.timestamps
     end
