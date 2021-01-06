@@ -1,7 +1,7 @@
 .full-page {
     height: 100%;
-    background-color: #EEF9FF;
-    // background-color: #B0DEEC;
+    // background-color: #EEF9FF;
+    background-color: #F1F5F9;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 
     & header {
@@ -29,10 +29,127 @@
 }
 
 // indexページ
-.sub-title {
-    h1 {
-        width: 70%;
-        margin: 0 auto;
-        font-size: 2rem;
+.home-page {
+    background-color: white;
+
+    .row-up {
+        height: 100%;
+        color:#292929;
+        border-bottom: 2px solid #D8D8D8;
+
+        .col-left {
+            background-color: #FFFFFF;
+            & h1 {
+                margin-top: 100px;
+                margin-bottom: 80px;
+                font-size: 2.6rem;
+            }
+
+            & img { height: 250px; }
+        }
+
+        .col-right {
+            background-color: #6C98B8;
+            & img {
+                margin-top: 100px;
+                margin-bottom: 80px;
+                height: 250px;
+            }
+
+            & h1 {
+                font-size: 2.6rem;
+                color: white;
+            } 
+        }
+    }
+
+    .row-down {
+        .col-up {
+            margin-top: 80px;
+            padding-bottom: 100px;
+            border-bottom: 2px solid #D8D8D8;
+
+            .sub-title {
+                margin-top: 60px;
+                h1 {
+                    width: 70%;
+                    margin: 0 auto;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .col-down {
+            margin: 80px auto;
+        }
+    }
+}
+
+
+// レスポンシブ
+@media (max-width: 600px) {
+    // full-page
+    .full-page {
+        & header {
+            .navbar-brand { font-size: 1.4rem; }
+            .nav-item {
+                font-size: 1rem;
+                margin: 0px;
+            }
+            .nav-item.nav-event { margin-left: 0; }
+        }
+    }
+
+
+    // indexページ
+    .home-page {
+        .row-up {
+            .col-left {
+                & h1 {
+                    margin-top: 10px;
+                    margin-bottom: 30px;
+                    font-size: 1.4rem;
+                }
+
+                & img { 
+                    height: 150px;
+                }
+            }
+
+            .col-right {
+                & img {
+                    margin-top: 10px;
+                    margin-bottom: 30px;
+                    height: 150px;
+                }
+
+                & h1 {
+                    margin-bottom: 30px;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .row-down {
+            .col-up {
+                margin-top: 40px;
+                padding-bottom: 40px;
+                border-bottom: 2px solid #D8D8D8;
+
+                h1 { font-size: 1.4rem; }
+
+                .sub-title {
+                    margin-top: 30px;
+                    h1 {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            .col-down {
+                margin: 40px 0;
+                h1 { font-size: 1.4rem; }
+            }
+        }
     }
 }

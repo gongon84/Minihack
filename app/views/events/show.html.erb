@@ -7,6 +7,7 @@
 
     <div class="event-show">
         <%# イベント %>
+        <h1 class="text-center mb-5" style="color:#4E454A;">イベント情報</h1>
         <div class="card mb-3">
                 <div class="card-body">
                     <% if @event.status == "募集中" %>
@@ -41,6 +42,7 @@
         </div>
 
         <%# 作品 %>
+        <h1 class="text-center my-5" style="color:#4E454A;">作品情報</h1>
         <% if @event.status == "終了" %>
             <div class="card mb-3">
                 <div class="card-body">
