@@ -1,10 +1,17 @@
 <%# ログイン画面 %>
-<%= form_with url: "/login", local: true, method: 'POST' do |f| %>
-  <%= f.label :email, 'メールアドレス' %>
-  <%= f.text_field :email  %>
+<div class="container pb-5">
+<h3 class="mt-5">ログイン画面</h3>
+  <%= form_with url: "/login", local: true, method: 'POST', class: "mt-3" do |f| %>
+    <div class="my-2">
+      <h5><%= f.label :email, 'メールアドレス' %></h5>
+      <%= f.text_field :email, class: "py-1 w-25"  %>
+    </div>
 
-  <%= f.label :password, 'パスワード' %>
-  <%= f.password_field :password  %>  
+    <div class="my-2">
+      <h5><%= f.label :password, 'パスワード' %></h5>
+      <%= f.password_field :password, class: "py-1 w-25" %>  
+    </div>
 
-  <%= f.submit "ログイン" %>        
-<% end %>
+    <%= f.submit "ログイン" %>        
+  <% end %>
+</div>

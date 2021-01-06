@@ -1,26 +1,26 @@
+<%# 新規登録 %>
 <%= form_with url: "/users/create", local: true do |f| %>
-
-    <div>
-        <%= f.label :name, 'ニックネーム' %>
-        <%= f.text_field :name %>
+    <div class="my-2">
+        <h5><%= f.label :name, 'ニックネーム'%></h5>
+        <%= f.text_field :name, class: "py-1 w-25" %>
     </div>
 
-    <div>
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.text_field :email %>
+    <div class="my-2">
+        <h5><%= f.label :email, 'メールアドレス' %></h5>
+        <%= f.text_field :email, class: "py-2 w-25" %>
     </div>
 
-    <div>
-        <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password %>
+    <div class="my-2">
+        <h5><%= f.label :password, 'パスワード' %></h5>
+        <%= f.password_field :password, class: "py-1 w-25" %>
     </div>
 
-    <div>
-        <%= f.label :password_confirmation, 'パスワード確認' %>
-        <%= f.password_field :password_confirmation %>
+    <div class="my-2">
+        <h5><%= f.label :password_confirmation, 'パスワード確認' %></h5>
+        <%= f.password_field :password_confirmation, class: "py-1 w-25" %>
     </div>
         
-    <div>        
-        <%= f.submit "送信" %>
+    <div class="my-2">        
+        <%= f.submit "登録" %>
     </div>
 <% end %>
