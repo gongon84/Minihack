@@ -1,13 +1,13 @@
-<div class="show-page container py-5">
+<div class="show-show container pt-4">
 
     <%# 戻るボタン %>
-    <div class="">
+    <div>
         <%= link_to("戻る", "/events/index", class: "btn btn-primary") %>
     </div>
 
     <div class="event-show">
         <%# イベント %>
-        <h1 class="text-center mb-5" style="color:#4E454A;">イベント情報</h1>
+        <h1 class="text-center mb-4 mb-md-5" style="color:#4E454A;">イベント情報</h1>
         <div class="card mb-3">
                 <div class="card-body">
                     <% if @event.status == "募集中" %>
@@ -18,11 +18,11 @@
                         <h6 class="btn btn-outline-secondary"><%= @event.status %></h6>
                     <% end %>
                     <h2 class="card-title mt-2"><%= @event.title %></h2>
-                    <h6>作成者：<%= link_to("#{@event.user.name}", "/users/#{@event.user.id}/show") %></h6>
-                    <h6>言語：<%= @event.skill %></h6>
-                    <h6>募集人数：<%= @event.accept_num %></h6>
-                    <h6>URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
-                    <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@event.description.split("\n"), tag(:br)) %></p>
+                    <h6 class="card-text">作成者：<%= link_to("#{@event.user.name}", "/users/#{@event.user.id}/show") %></h6>
+                    <h6 class="card-text">言語：<%= @event.skill %></h6>
+                    <h6 class="card-text">募集人数：<%= @event.accept_num %></h6>
+                    <h6 class="card-text">URl(Zoomなど)：<%= link_to("#{@event.url}", "#{@event.url}", target: :_blank)%></h6>
+                    <p class="profile card-text"><%= safe_join(@event.description.split("\n"), tag(:br)) %></p>
                     <div class="d-flex">
                         <% if current_user && current_user.id == @event.user.id %>
                             <%= link_to("イベントの編集", "/events/#{@event.id}/edit", class: "mr-2 btn btn-outline-secondary") %>
@@ -40,15 +40,17 @@
                     </div>
                 </div>
         </div>
+    </div>
 
         <%# 作品 %>
-        <h1 class="text-center my-5" style="color:#4E454A;">作品情報</h1>
+        <div class="work-show">
+        <h1 class="text-center my-4 my-md-5" style="color:#4E454A;">作品情報</h1>
         <% if @event.status == "終了" %>
             <div class="card mb-3">
                 <div class="card-body">
                 <% if @work %>
                     <h2 class="card-title mt-2"><%= @work.title %></h2>
-                    <h6>作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
+                    <h6 class="card-text">作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
                     <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
                     <% if current_user && current_user.id == @work.event.user_id %>
                         <div class="btn-group">

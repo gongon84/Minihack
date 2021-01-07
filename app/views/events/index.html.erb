@@ -1,57 +1,60 @@
-<div class="index-page container">
+<div class="event-index container">
 
     <%# 追加ボタン %>
-    <div class="mt-5 d-flex justify-content-end">
+    <div class="mt-4 mt-md-5 d-flex justify-content-end">
         <%= link_to("イベントを作成", "/events/new", class: "btn btn-primary") %>
     </div>
 
     <%# 検索フォーム %>
     <div class="search-wrap">
-    <p class="m-0" style="background-color: #F5F5F5;"><i class="fas fa-search mr-3"></i>検索条件</p>
-    <div class="search_form_wrap">
-        <%= search_form_for(@search, url: "/events/index" ) do |f| %>
-            
-            <div class="d-flex">
-                <div class="search_form_group keyword">
-                <%= f.label :name , "キーワード", class: "label" %>
-                </div>
-
-                <div class="search_form_group">
-                <%= f.label :title, "イベント名", class: "label" %>
-                <%= f.search_field :title_cont %>
-                </div>
+        <p class="m-0"><i class="fas fa-search mr-2 mr-md-3"></i>検索条件</p>
+        <div class="search_form_wrap">
+            <%= search_form_for(@search, url: "/events/index" ) do |f| %>
                 
-                <div class="search_form_group">
-                    <%= f.label :skill, "言語", class: "label" %>
-                    <%= f.search_field :skill_cont %>
+                <div class="d-md-flex">
+                    <div class="search_form_group keyword">
+                    <%= f.label :name , "キーワード", class: "label" %>
+                    </div>
+
+                    <div class="search_form_group">
+                    <%= f.label :title, "イベント名", class: "label" %>
+                    <%= f.search_field :title_cont %>
+                    </div>
+                    
+                    <div class="search_form_group">
+                        <%= f.label :skill, "言語", class: "label" %>
+                        <%= f.search_field :skill_cont %>
+                    </div>
+
+                    <div class="search_form_group">
+                        <%= f.label :accept_num, "募集人数", class: "label" %>
+                        <%= f.search_field :accept_num_cont %>
+                    </div>
                 </div>
 
-                <div class="search_form_group">
-                    <%= f.label :accept_num, "募集人数", class: "label" %>
-                    <%= f.search_field :accept_num_cont %>
+                <div class="mt-2">
+                <%= f.label :status, "開催状況", class: "label", style: "margin-right: 40px;" %>
+                <%= f.select :status_eq, {"募集中": "募集中", "開催中": "開催中", "終了": "終了"}, { include_blank: '選択してください'}, class: "select-btn p-1" %>
                 </div>
-            </div>
 
-            <div class="mt-2">
-            <%= f.label :status, "開催状況", class: "label", style: "margin-right: 40px;" %>
-            <%= f.select :status_eq, {"募集中": "募集中", "開催中": "開催中", "終了": "終了"}, { include_blank: '選択してください'}, class: "p-1", style: "width: 20%" %>
-            </div>
+                <%# セレクトボタンにclassを設定するには空{}が必要 %>
+                <div class="mt-2">
+                <%= f.label :sorts, "並び替え", class: "label", style: "margin-right: 40px;" %>
+                <%= f.select( :sorts, { '選択してください': 'id desc', 'タイトル順': 'title asc', 'タイトル降順': 'title desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }, {}, class: 'select-btn p-1' ) %>
+                </div>
 
-            <div class="mt-2">
-            <%= f.label :sorts, "並び替え", class: "label", style: "margin-right: 40px;" %>
-            <%= f.select( :sorts, { '選択してください': 'id desc', 'タイトル順': 'title asc', 'タイトル降順': 'title desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }) %>
-            </div>
-
-            <div class="mt-2">
-            <%= f.submit "検索" %>
-            </div>
-        <% end %>
-    </div>
+                <div class="mt-2">
+                <%= f.submit "検索" %>
+                </div>
+            <% end %>
+        </div>
     </div>
 
+
+    <%# イベントカード %>
     <div class="event-wrap">
         <% @events.each do |event| %>
-        <div class="card m-3" style="width: 100%;">
+        <div class="card m-md-3" style="width: 100%;">
             <div class="card-body">
                 <% if event.status == "募集中" %>
                     <h6 class="btn btn-outline-danger"><%= event.status %></h6>
