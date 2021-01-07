@@ -1,3 +1,4 @@
+<div class="user-edit">
 <% @user.errors.full_messages.each do |message| %>
     <div class="form-error">
         <h2 class="text-danger"><%= message %></h2>
@@ -5,29 +6,30 @@
 <% end %>
 
 <div class="container">
-<h3 class="mt-5 mb-4">編集画面</h3>
-<%= form_with url: "/users/update", local: true, method: 'POST' do |f| %>
+    <h3 class="mt-5 mb-4">編集画面</h3>
+    <%= form_with url: "/users/update", local: true, method: 'POST' do |f| %>
 
-    <div class="my-2">
-        <h5><%= f.label :name, '名前' %></h5>
-        <%= f.text_field :name, value: @user.name, class: "py-1 w-25" %>
-    </div>
+        <div class="my-2">
+            <h5><%= f.label :name, '名前' %></h5>
+            <%= f.text_field :name, value: @user.name, class: "py-1" %>
+        </div>
 
-    <div class="my-2">
-        <h5><%= f.label :old, '年齢' %></h5>
-        <%= f.text_field :old, value: @user.old, class: "py-1 w-25" %>
-    </div>
+        <div class="my-2">
+            <h5><%= f.label :old, '年齢' %></h5>
+            <%= f.text_field :old, value: @user.old, class: "py-1" %>
+        </div>
 
-    <div class="my-2">
-        <h5><%= f.label :profile, 'プロフィール' %></h5>
-        <%= f.text_area :profile, value: @user.profile, class: "py-1", size: "60x5" %>
-    </div>
-    
+        <div class="my-2">
+            <h5><%= f.label :profile, 'プロフィール' %></h5>
+            <%= f.text_area :profile, value: @user.profile, class: "profile-form py-1"%>
+        </div>
         
-    <div class="my-2">        
-        <%= f.submit "編集" %>
-    </div>
-<% end %>
+            
+        <div class="my-2">        
+            <%= f.submit "編集", class: "submit-btn" %>
+        </div>
+    <% end %>
+</div>
 </div>
 
 

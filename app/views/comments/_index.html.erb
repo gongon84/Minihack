@@ -1,21 +1,21 @@
-<div class="card p-2 my-4">
+<div class="comment-area card p-2 my-4">
     <% if comments.where(event_id: event.id).size > 0 %>
         <% comments.where(event_id: event.id).each do |comment| %>
             <div class="row border-bottom p-2 py-3">
-                <div class="col-11">
+                <div class="col-10 col-md-11">
                     <h6><%= comment.id %>：<%= comment.name %></h6>
                     <h5><%= comment.comment %></h5>
                 </div>
                 <%# アカウントユーザーとそうでない人で分ける %>
                 <% if comment.user_id %>
                     <% if current_user && current_user.id == comment.user_id %>
-                    <div class="col-1 d-flex">
+                    <div class="px-0 col-2 col-md-1 d-flex">
                         <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
                         class: "btn btn-outline-secondary align-self-center") %>
                     </div>
                     <% end %>
                 <% else %>
-                    <div class="col-1 d-flex">
+                    <div class="px-0 col-2 col-md-1 d-flex">
                         <%= link_to("削除", "/comments/#{event.id}/#{comment.id}/destroy", method: "post", remote: true,
                         class: "btn btn-outline-secondary align-self-center") %>
                     </div>

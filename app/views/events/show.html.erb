@@ -42,8 +42,8 @@
         </div>
     </div>
 
-        <%# 作品 %>
-        <div class="work-show">
+    <%# 作品 %>
+    <div class="work-show">
         <h1 class="text-center my-4 my-md-5" style="color:#4E454A;">作品情報</h1>
         <% if @event.status == "終了" %>
             <div class="card mb-3">
@@ -51,7 +51,7 @@
                 <% if @work %>
                     <h2 class="card-title mt-2"><%= @work.title %></h2>
                     <h6 class="card-text">作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
-                    <p class="card-text p-3 my-4" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
+                    <p class="profile card-text"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
                     <% if current_user && current_user.id == @work.event.user_id %>
                         <div class="btn-group">
                             <%= link_to("サービス概要を編集", "/works/#{@event.id}/edit", class: "mr-3 btn btn-outline-secondary") %>
@@ -65,16 +65,18 @@
                 <% end %>
                 </div>
             </div>
-         <% end %>
+        <% end %>
+    </div>
 
 
-        <%# コメント %>
-        <div id="comments_form" class="mt-5">
+    <%# コメント %>
+    <div class="comment-show">
+        <h1 class="text-center my-4 my-md-5" style="color:#4E454A;">コメント</h1>
+        <div id="comments_form">
             <%= render partial: 'comments/form', locals: { event: @event } %>
         </div>
         <div id="comments_area">
             <%= render partial: 'comments/index', locals: { event: @event, comments: @comments } %>
         </div>
-        
     </div>
 </div>

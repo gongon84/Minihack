@@ -1,15 +1,17 @@
-<h3>コメント</h3>
+<%# コメント入力フォーム %>
+<div class="comment-form">
 <%= form_with url: "/comments/#{event.id}/create" do |f| %>
     <%= f.hidden_field :event_id, :value => event.id %>
     
     <% if current_user %>
-        <%= f.text_field :name, :value => current_user.name, readonly: 'readonly', id: 'current_name', class: "pb-3 px-2 w-25" %>
+        <%= f.text_field :name, :value => current_user.name, readonly: 'readonly', id: 'current_name', class: "name-form pb-3 px-2" %>
     <% else %>
-        <%= f.text_field :name, :placeholder => "名前（ゲスト）", id: 'guest_name', class: "pb-3 px-2 w-25" %>
+        <%= f.text_field :name, :placeholder => "名前（ゲスト）", id: 'guest_name', class: "name-form pb-3 px-2" %>
     <% end %>
         
-    <div class="mt-0 d-flex">        
-        <%= f.text_area :comment, :placeholder => "コメントを追加…", class: "pb-4 px-2 w-50 align-self-center" %>
+    <div class="mt-0 d-md-flex">        
+        <%= f.text_area :comment, :placeholder => "コメントを追加…", class: "comment-form pb-4 px-2 align-self-center" %>
         <%= f.submit "コメント", class: "btn btn-secondary align-self-end" %>
     </div>
 <% end %>
+</div>

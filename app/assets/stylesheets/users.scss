@@ -1,3 +1,31 @@
+// formページ
+.user-form {
+    input {
+        width: 25%;
+    }
+
+    .submit-btn {
+        width: 10%;
+        margin-top: 30px;
+    }
+}
+
+// editページ
+.user-edit {
+    input {
+        width: 25%;
+    }
+
+    .profile-form {
+        width: 50%;
+        height: 140px;
+    }
+
+    .submit-btn {
+        width: 10%;
+    }
+}
+
 // showページ
 .user-show-page {
     position: relative;
@@ -23,6 +51,35 @@
             height: 150px;
             border-radius: 50%;
             border: 2px solid #6C757D;
+        }
+    }
+}
+
+
+// レスポンシブ
+@media (max-width: 600px) {
+    // formページ
+    .user-form {
+        input {
+            width: 100%;
+        }
+        .submit-btn {
+            width: 50%;
+        }
+    }
+
+    // editページ
+    .user-edit {
+        input {
+            width: 100%;
+        }
+
+        .profile-form {
+            width: 100%;
+        }
+
+        .submit-btn {
+            width: 50%;
         }
     }
 }

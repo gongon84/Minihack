@@ -46,15 +46,24 @@
 // showページ
 .show-show {
     padding-bottom: 100px;
+
+    .profile {
+        padding: 15px;
+        margin: 25px 0;
+        background-color:#DDD;
+        border-radius:10px;
+    }
+
     .event-show {
         margin-top: 60px;
+    }
 
-        .profile {
-            padding: 15px;
-            margin: 25px 0;
-            background-color:#DDD;
-            border-radius:10px;
-        }
+    .work-show {
+        margin-top: 150px;
+    }
+
+    .comment-show {
+        margin-top: 150px;
     }
 }
 
@@ -88,7 +97,10 @@
             }
             .card-title {
                 margin: 15px 0;
-                font-size: 1.6rem;
+                font-size: 1.2rem;
+            }
+            .card-subtitle, .card-text {
+                font-size: 0.8rem;
             }
         }
     }
@@ -96,16 +108,23 @@
     // showページ
     .show-show {
         h1 { font-size: 1.6rem; }
-        .card-title { font-size: 1.4rem; }
+        .card-title { font-size: 1.2rem; }
         .card-text { font-size: 0.8rem; }
-        
-        .event-show {
-            margin-top: 30px;
+        .profile {
+            padding: 10px;
+            margin: 10px 0;
+        }
 
-            .profile {
-                padding: 10px;
-                margin: 10px 0;
-            }
+        .event-show {
+            margin-top: 40px;
+        }
+
+        .work-show {
+            margin-top: 70px;
+        }
+
+        .comment-show {
+            margin-top: 70px;
         }
     }
 }
