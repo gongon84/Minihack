@@ -85,6 +85,84 @@
     }
 }
 
+// aboutページ
+.about-page {
+    .about-figma {
+        position: relative;
+        width: 320px;
+        height: 568px;
+        background-image: url("/assets/about-page.png");
+        margin: 0 auto;
+    }
+    
+    .about-btn {
+        position: absolute;
+        left: 74px;
+        display: block;
+        width: 170px;
+        height: 60px;
+    }
+
+    .account-btn {
+        top: 170px;
+        background-image: url("/assets/about-account.png");
+    }
+
+    .event-btn {
+        position: absolute;
+        top: 295px;
+        background-image: url("/assets/about-event.png");
+    }
+
+    .work-btn {
+        position: absolute;
+        top: 420px;
+        background-image: url("/assets/about-work.png");
+    }
+
+
+}
+
+// accountページ
+.account-page {
+    .account-figma {
+        position: relative;
+        width: 1440px;
+        height: 1590px;
+        background-image: url("/assets/account-page.png");
+        margin: 0 auto;
+    }
+
+    .account-none-btn {
+        position: absolute;
+        display: block;
+        left: 611px;
+        top: 810px;
+        width: 140px;
+        height: 40px;
+        background-image: url("/assets/account-none.png");
+
+        &:hover {
+            filter: brightness(80%);
+        }
+    }
+
+    .account-use-btn {
+        position: absolute;
+        display: block;
+        left: 892px;
+        top: 806px;
+        width: 140px;
+        height: 40px;
+        background-image: url("/assets/account-use.png");
+
+        &:hover {
+            filter: brightness(80%);
+        }
+    }
+}
+
+
 
 // レスポンシブ
 @media (max-width: 600px) {
@@ -151,5 +229,11 @@
                 h1 { font-size: 1.4rem; }
             }
         }
+    }
+
+    // aboutページ
+    .about-figma {
+        width: 320px;
+        height: 568px;
     }
 }

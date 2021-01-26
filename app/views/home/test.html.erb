@@ -1,7 +1,11 @@
 <div class="container">
-    <%= render partial: 'test_test', locals: {name: "山田", comment: "おはよう"}  %>
+    <%# render partial: 'test_test', locals: {name: "山田", comment: "おはよう"}  %>
 </div>
 
-<div class="test-figma" style="height:896px;">
-    <%= image_tag "/assets/テストfigma.png", height: "896px", class: "card-img-top" %>
+<div class="test-figma d-block d-sm-none" style="height:696px;">
+    <%= image_tag "/assets/about-page.png", height: "696px", class: "card-img-top" %>
+</div>
+
+<div class="test-figma d-none d-sm-block" style="width: 450px; margin: 0 auto;">
+    <%= image_tag "/assets/about-page.png", height: "896px", class: "card-img-top" %>
 </div>
