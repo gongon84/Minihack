@@ -5,6 +5,34 @@
         <%= link_to("戻る", "/events/index", class: "btn btn-primary") %>
     </div>
 
+
+    <%# 作品 %>
+    <% if @event.status == "終了" %>
+    <div class="work-show">
+        <h1 class="text-center my-4 my-md-5" style="color:#4E454A;">完成した作品</h1>
+            <div class="card mb-0">
+                <div class="card-body">
+                <% if @work %>
+                    <h2 class="card-title mt-2"><%= @work.title %></h2>
+                    <h6 class="card-text">作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
+                    <p class="profile card-text"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
+                    <% if current_user && current_user.id == @work.event.user_id %>
+                        <div class="btn-group">
+                            <%= link_to("サービス概要を編集", "/works/#{@event.id}/edit", class: "mr-3 btn btn-outline-secondary") %>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <h3>作品情報を入力しよう</h3>
+                    <% if current_user && current_user.id == @event.user.id %>
+                    <%= link_to("作品情報を入力", "/works/#{@event.id}/new", class: "btn btn-outline-primary") %>
+                    <% end %>
+                <% end %>
+                </div>
+            </div>
+    </div>
+    <% end %>
+
+
     <div class="event-show">
         <%# イベント %>
         <h1 class="text-center mb-4 mb-md-5" style="color:#4E454A;">イベント情報</h1>
@@ -40,32 +68,6 @@
                     </div>
                 </div>
         </div>
-    </div>
-
-    <%# 作品 %>
-    <div class="work-show">
-        <h1 class="text-center my-4 my-md-5" style="color:#4E454A;">作品情報</h1>
-        <% if @event.status == "終了" %>
-            <div class="card mb-3">
-                <div class="card-body">
-                <% if @work %>
-                    <h2 class="card-title mt-2"><%= @work.title %></h2>
-                    <h6 class="card-text">作品URL：<%= link_to("#{@work.portfolio_url}", "#{@work.portfolio_url}", target: :_blank)%></h6>
-                    <p class="profile card-text"><%= safe_join(@work.profile.split("\n"), tag(:br)) %></p>
-                    <% if current_user && current_user.id == @work.event.user_id %>
-                        <div class="btn-group">
-                            <%= link_to("サービス概要を編集", "/works/#{@event.id}/edit", class: "mr-3 btn btn-outline-secondary") %>
-                        </div>
-                    <% end %>
-                <% else %>
-                    <h3>作品情報を入力しよう</h3>
-                    <% if current_user && current_user.id == @event.user.id %>
-                    <%= link_to("作品情報を入力", "/works/#{@event.id}/new", class: "btn btn-outline-primary") %>
-                    <% end %>
-                <% end %>
-                </div>
-            </div>
-        <% end %>
     </div>
 
 
