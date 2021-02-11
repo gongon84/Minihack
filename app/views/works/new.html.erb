@@ -16,6 +16,11 @@
         <h5><%= f.label :profile, '作品概要' %></h5>
         <%= f.text_area :profile, class: "py-1", size: "80x5" %>
     </div>
+
+    <div class="my-2">
+        <h5><%= f.label :image_name, '作品画像' %></h5>
+        <%= f.file_field :image_name, class: "py-1", size: "80x5" %>
+    </div>
         
     <div class="my-2">        
         <%= f.submit "登録" %>

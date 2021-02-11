@@ -1,3 +1,17 @@
 // Place all the styles related to the Works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.file-upload {
+    background: #EFEFEF;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin: 0 10px 0 0;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.js-upload-file {
+    display: none;
+}

@@ -32,6 +32,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.permit(:event_id, :title, :portfolio_url, :profile)
+    params.permit(:event_id, :title, :portfolio_url, :profile, :image_name)
   end
 end

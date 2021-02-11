@@ -67,3 +67,4 @@ end
 gem 'ransack' # 検索機能
 gem 'rails-i18n' # 日本語化
 gem 'sorcery' # 認証機能
+gem 'carrierwave' # 画像表示
