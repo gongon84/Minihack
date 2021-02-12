@@ -1,7 +1,16 @@
 class PortfolioImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+
+  # minimagickの使用
+  include CarrierWave::MiniMagick
+
+  process resize_to_limit: [700, 600] # リサイズの制限
+  
+  # サムネイル リサイズ
+  version :thumbnail do
+    process resize_to_limit: [350, 250]
+  end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
