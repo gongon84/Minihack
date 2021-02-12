@@ -33,6 +33,16 @@
             <h5 class="js-upload-filename my-2">デフォルト画像</h5>
         <% end %>
         <span class="fileclear js-upload-fileclear p-1" style="border: 1px solid black; display:none;">選択ファイルをクリア</span>
+        <%# プレビュー画像 %>
+        <% if @work.image_name? %>
+            <div>
+                <%= image_tag @work.image_name.thumbnail.url, class: "img_prev", height: "250px" %>
+            </div>
+        <% else %>
+            <div>
+                <%= image_tag "/assets/default_app_info.png", class: "img_prev", height: "250px" %>
+            </div>
+        <% end %>
     </div>
         
     <div class="my-2">        
