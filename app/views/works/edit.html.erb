@@ -22,15 +22,18 @@
 
     <%# 画像 %>
     <div class="my-2">
-        <h5><%= f.label :image_name, '作品画像' %></h5>
         <label class="file-upload">
-            ファイルを選択
+            サムネイルを選択
             <%= f.file_field :image_name, value: @work.image_name, id: "test", class: "js-upload-file py-1", size: "80x5" %>
         </label>
-        <h5 class="js-upload-filename my-2"><%= @work.image_name_identifier %></h5>
-        <span class="fileclear js-upload-fileclear p-1" style="border: 1px solid black;">選択ファイルをクリア</span>
+        <% if @work.image_name? %>
+            <h5 class="js-upload-filename my-2"><%= @work.image_name_identifier %></h5>
+            <%= link_to("デフォルト画像に戻す", "/works/#{@work.event_id}/destroy_image", method: "post", class: "js-destroy-file") %>
+        <% else %>
+            <h5 class="js-upload-filename my-2">デフォルト画像</h5>
+        <% end %>
+        <span class="fileclear js-upload-fileclear p-1" style="border: 1px solid black; display:none;">選択ファイルをクリア</span>
     </div>
-
         
     <div class="my-2">        
         <%= f.submit "編集" %>

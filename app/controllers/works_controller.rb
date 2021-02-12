@@ -29,6 +29,12 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy_image
+    @work = Work.find_by(event_id: params[:event_id])
+    @work.remove_image_name!
+    @work.save
+  end
+
   private
 
   def work_params

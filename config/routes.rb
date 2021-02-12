@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get 'works/:event_id/new' => 'works#new'
   post 'works/:event_id/update' => 'works#update'
   post 'works/:event_id/create' => 'works#create'
-  post 'workss/:event_id/destroy' => 'works#destroy'
+  post 'works/:event_id/destroy' => 'works#destroy'
+  post 'works/:event_id/destroy_image' => 'works#destroy_image'
 
   # comments
   post 'comments/:event_id/create' => "comments#create"
