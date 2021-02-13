@@ -17,9 +17,12 @@
         <%= f.text_area :profile, class: "py-1", size: "80x5" %>
     </div>
 
+    <%# 画像 %>
     <div class="my-2">
-        <h5><%= f.label :image_name, '作品画像' %></h5>
-        <%= f.file_field :image_name, class: "py-1", size: "80x5" %>
+        <label class="file-upload">
+            サムネイルを選択
+            <%= f.file_field :image_name, class: "py-1", size: "80x5" %>
+        </label>
     </div>
         
     <div class="my-2">        

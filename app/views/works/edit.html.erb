@@ -37,6 +37,7 @@
         <% if @work.image_name? %>
             <div>
                 <%= image_tag @work.image_name.thumbnail.url, class: "img_prev", height: "250px" %>
+                 <%= @work.image_name %>
             </div>
         <% else %>
             <div>
