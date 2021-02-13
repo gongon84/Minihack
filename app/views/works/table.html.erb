@@ -13,6 +13,7 @@
             <div class="card mb-4 shadow-sm" style="vertical-align:top;">
                 <% if work.image_name? %>
                     <%= image_tag work.image_name.thumbnail.url, height: "250px", class: "card-img-top" %>
+                    <%= image_tag work.image_name.url, height: "250px", class: "card-img-top" %>
                 <% else %>
                     <%= image_tag "/assets/default_app_info.png", height: "250px", class: "card-img-top" %>
                 <% end %>
