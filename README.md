@@ -16,10 +16,13 @@ https://mini-hackathon.herokuapp.com/
 ○ Postgresql    
 ○ bootstrap 4  
 ○ Heroku  
+○ Cloudinary  
+
 
 # 機能
 ○ ユーザー登録、ログイン機能(sorcery)  
 ○ 投稿機能  
-　・ イベント、ポートフォリオ   
+　・ イベント、ポートフォリオ  
+　・ 画像投稿(Cloudinary API, carrierwave, minimagick)  
 ○ コメント機能(Ajax)    
 ○ 検索機能(ransack)  
