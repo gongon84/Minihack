@@ -69,4 +69,5 @@ gem 'rails-i18n' # 日本語化
 gem 'sorcery' # 認証機能
 gem 'carrierwave' # 画像アップロード
 gem 'mini_magick' # 画像処理
+gem 'cloudinary' # 画像保存
 gem 'dotenv-rails' # 環境変数の管理 envファイル
