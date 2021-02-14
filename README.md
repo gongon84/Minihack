@@ -2,7 +2,7 @@
 オンラインハッカソンのマッチングサイト 
 
 # URL
-https://mini-hackathon.herokuapp.com/  
+[https://mini-hackathon.herokuapp.com/](https://mini-hackathon.herokuapp.com/){:target="_blank"}  
 
 # 概要  
 新型コロナウイルスの影響で対面でのイベントが減っています。  
