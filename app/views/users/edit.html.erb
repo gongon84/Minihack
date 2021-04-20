@@ -11,7 +11,11 @@
 
         <div class="my-2">
             <h5><%= f.label :name, '名前' %></h5>
-            <%= f.text_field :name, value: @user.name, class: "py-1" %>
+            <% if %>
+                <%= f.text_field :name, value: @user.name, readonly: true, class: "py-1", style: "background-color: #e9ecef;" %>
+            <% else %>
+                <%= f.text_field :name, value: @user.name, class: "py-1" %>
+            <% end %>
         </div>
 
         <div class="my-2">

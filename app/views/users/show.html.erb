@@ -12,7 +12,10 @@
         </div>
         <% if current_user && current_user.id == @user.id %>
             <%= link_to("編集", "/users/#{@user.id}/edit", class: "btn btn-outline-secondary") %>
-            <%= link_to("削除", "/users/#{@user.id}/destroy", method: 'POST', class: "btn btn-outline-secondary") %>
+            <% if not @user.guest%>
+                <%= link_to("削除", "/users/#{@user.id}/destroy", method: 'POST', class: "btn btn-outline-secondary",
+                data: {confirm: "【確認】#{@user.name}を削除してよろしいですか？"}) %>
+            <% end %>
         <% end %>
     </div>
 </div>
