@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # home
   get "/" => "home#index"
+  get '/download' => 'home#download'
   get '/about' => 'home#about'
   get '/about/account' => 'home#account'
   get "/test" => "home#test"

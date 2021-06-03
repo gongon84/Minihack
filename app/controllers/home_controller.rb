@@ -8,6 +8,9 @@ class HomeController < ApplicationController
     def account
     end
 
+    def download
+    end
+
     def test
     end
 end
