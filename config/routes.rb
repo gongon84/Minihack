@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   post 'comments/:event_id/create' => "comments#create"
   post 'comments/:event_id/:comment_id/destroy' => "comments#destroy"
 
+  # liles
+  post "/likes/:work_id/create" => "likes#create"
+  post "/likes/:work_id/destroy" => "likes#destroy"
+
   # users
   get '/users/:id/show' => 'users#show'
   get '/users/:id/edit' => 'users#edit'

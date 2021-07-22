@@ -5,6 +5,7 @@ class WorksController < ApplicationController
 
   def table
     @works = Work.all.order("id DESC")
+    @likes = Like.all
   end
 
   def edit
