@@ -1,0 +1,20 @@
+<div id="ajax-like-<%= work.id %>">
+    <% if current_user %>
+        <% if likes.find_by(user_id: current_user.id, work_id: work.id) %>
+            <%= link_to("/likes/#{work.id}/destroy", method: "post", class: "btn btn-sm", remote: true ) do %>
+                <i class="fas fa-heart" style="color:red;"></i>
+                <%= likes.where(work_id: work.id).count %>
+            <% end %>
+        <% else %>
+            <%= link_to("/likes/#{work.id}/create", method: "post", class: "btn btn-sm", remote: true) do %>
+                <i class="far fa-heart" style="color:red;"></i>
+                <%= likes.where(work_id: work.id).count %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <%= link_to("/likes/#{work.id}/create", method: "post", class: "btn btn-sm", remote: true) do %>
+            <i class="far fa-heart" style="color:red;"></i>
+            <%= likes.where(work_id: work.id).count %>
+        <% end %>
+    <% end %>
+</div>
