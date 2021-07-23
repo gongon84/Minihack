@@ -5,6 +5,13 @@ class WorksController < ApplicationController
 
   def table
     @works = Work.all.order("id DESC")
+    @likes = Like.all
+
+    # 検索テスト
+    @search = Work.ransack(params[:q])
+    # デフォルトのソート順を指定
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
+    @works = @search.result
   end
 
   def edit

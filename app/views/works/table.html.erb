@@ -4,6 +4,17 @@
 <h1>作品一覧</h1>
 </div>
 
+<%# 検索テスト %>
+<div class="search-wrap mb-5">
+<%= search_form_for(@search, url: "/works/table") do |f| %>
+    <%# f.search_field :title_cont %>
+    <%= f.select( :sorts, { '並び順': 'id desc', 'いいねの多い順': 'likes_count desc', '古い順': 'created_at asc', '新しい順': 'created_at desc' }, {}, class: 'select-btn p-1' ) %>
+    
+    <%= f.submit '検索' %>
+<% end %>
+</div>
+<%# ここまで %>
+
 <div class="row">
 <% if @works.size > 0 %> 
     <% @works.each do |work| %>
@@ -26,7 +37,10 @@
                         <%= link_to "https://twitter.com/share?url=#{request.url}&text=#{work.title}を作成しました！", title: 'Twitter', target: '_blank', class: "btn btn-sm btn-outline-secondary" do %>
                             <i class="fab fa-twitter" style="color:#3EA7E8;"></i>
                         <% end %>
+                        <%# いいね（ajax） %>
+                        <%= render partial: 'likes/show', locals: { likes: @likes, work: work } %>
                     </div>
+                    
                     <small class="text-muted">
                     <time datetime="<%= work.created_at %>", class="ml-auto">
                         <%= time_ago_in_words(work.created_at) %>前
