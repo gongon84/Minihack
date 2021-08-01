@@ -1,11 +1,14 @@
 <div class="user-show-page">
-    <div class="head"></div>
     <div class="main container">
-        <%= image_tag "/assets/test.png", class: "profile-image mt-4" %>
-        <div class="text-center mt-3">
-            <h2><%= @user.name %>（<%= @user.old %>）</h2>
+        <%# プロフィール画像 %>
+        <div>
+            <%= image_tag "/assets/profile-icon.png", class: "profile-image" %>
+        </div>
+        <%# プロフィール文 %>
+        <div class="main-profile text-center">
+            <h2><%= @user.name %></h2>
             <% if @user.profile %>
-            <h3 class="mt-5 p-3" style="background-color:#DDD; border-radius:10px;"><%= safe_join(@user.profile.split("\n"), tag(:br)) %></h3>
+            <h3 class="mt-5 p-3" style="background-color:#DDD; border-radius:10px; min-height:200px;"><%= safe_join(@user.profile.split("\n"), tag(:br)) %></h3>
             <% else %>
                 <h3 class="mt-5 p-3" style="background-color:#DDD; border-radius:10px; height:140px;">プロフィールが入力していません</h3> 
             <% end %>
